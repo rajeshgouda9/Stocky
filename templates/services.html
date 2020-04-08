@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<header class="header-service">
+    
+    <nav>
+        <ul style="float: left;">
+            <li><a href="#">MSFT</a></li>
+            <li><a href="#">GOOGL</a></li>
+            <li><a href="#">TSLA</a></li>
+            <li><a href="#">SBIN</a></li>
+            <li><a href="#">AMZN</a></li>
+        </ul>
+    </nav>
+</header>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Year', 'Sales', 'Expenses'],
+          ['2004',  1000,      400],
+          ['2005',  1170,      460],
+          ['2006',  660,       1120],
+          ['2007',  1030,      540]
+        ]);
+
+        var options = {
+          title: 'Microsoft Corporation',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+
+	<div class="service-container">
+		<div id="curve_chart" style="width: 500px; height: 300px"></div>
+		<div style="font-family: 'Roboto', sans-serif; margin-left:  60px; padding: 10px; display:inline-block; background-color:gray;">Current Price:'$      '</div>
+		<div style="font-family: 'Roboto', sans-serif; margin-left:  60px; padding: 10px; display:inline-block; background-color:gray;">Predicted Price:'$    '</div>
+	  
+	</div>
+{% endblock %}

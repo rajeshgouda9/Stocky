@@ -1,0 +1,48 @@
+{% load static %}
+{% static "images" as baseUrl %}
+<html>
+<head>
+    <title>Services</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/home.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One|Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<header class="header-nav">
+    <h1 class="h1-nav">STO<span>CKY</span></h1>
+    <nav>
+        <ul>
+            <li><a href="{%url 'home'%}">HOME</a> </li>
+            <li><a href="{%url 'about'%}">ABOUT</a> </li>
+            <li><a href="{%url 'contact'%}">CONTACT</a> </li>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'services'%}">SERVICES</a> </li>
+            <li><a href="{% url 'logout'%}">LOGOUT</a></li>
+            {% else %}
+            <li><a href="{% url 'register'%}">REGISTER</a></li>
+            <li><a href="{% url 'login'%}">LOGIN </a></li>
+            {% endif %}
+
+        </ul>
+    </nav>
+</header>
+<body>
+
+
+    {% block content %}
+
+    {% endblock %}
+
+<div class="footer">
+     <div class="foot-text">© 2020 Stock Prediction. All rights reserved.</div>
+         <ul>
+             <li><a href="#" target="blank"><i class="fa fa-facebook"></i></a></li>
+             <li><a href="#" target="blank"><i class="fa fa-twitter"></i></a></li>
+             <li><a href="#" target="blank"><i class="fa fa-instagram"></i></a></li>
+             <li><a href="#" target="blank"><i class="fa fa-youtube"></i></a></li>
+         </ul>
+
+</div>
+
+</body>
+
+</html>

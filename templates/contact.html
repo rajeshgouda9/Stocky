@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+{% load static %}
+{% static "images" as baseUrl %}
+<html>
+<head>
+    <title>PREDICTION</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/contact.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One|Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+</head>
+<header class="nav-head">
+    <h1 class="logo">STO<span>CKY</span></h1>
+    <nav>
+        <ul class="nav-ul">
+            <li class="nav-li"><a class="nav-a" href="{%url 'home'%}">HOME</a> </li>
+            <li class="nav-li"><a class="nav-a" href="{%url 'about'%}">ABOUT</a> </li>
+            <li class="nav-li"><a class="nav-a" href="{%url 'contact'%}">CONTACT</a> </li>
+            {% if user.is_authenticated %}
+            <li class="nav-li"><a class="nav-a" href="{% url 'services'%}">SERVICES</a> </li>
+            <li class="nav-li"><a class="nav-a" href="{% url 'logout'%}">LOGOUT</a></li>
+            {% else %}
+            <li class="nav-li"><a class="nav-a" href="{% url 'register'%}">REGISTER</a></li>
+            <li class="nav-li"><a class="nav-a" href="{% url 'login'%}">LOGIN </a></li>
+            {% endif %}
+
+        </ul>
+    </nav>
+</header>
+<body>
+    <div class="hello">
+        <h1>Get in touch</h1>
+    </div>
+    <div class="container">
+
+    <div class="col-md-1"></div>
+
+    <div class="col-md-6" >
+    <form method="POST">
+        {% csrf_token %}
+    <br><br><br>
+     {% if user.is_anonymous %}   
+    <input type="text" title="Your Name" class="name" class="from-control" placeholder="Your Name*">
+    <br>
+    <br>
+    <input type="email"  title="Email Address" class="mail" class="from-control" placeholder="Email Address*" style="width:47%;">
+
+    &nbsp;&nbsp;<input type="numbers" class="mail" title="Number" required class="from-control" placeholder="+91" style="width:50%;">
+
+    <br>
+    <br>
+    <input type="text" placeholder="Message" class="message"  name="message" title="Message" class="from-control">
+    <br>
+    <br>
+    <button type="submit" class="bttn" title="Submit Post"  class="from-control" value="Submit">Submit</button><br>
+    {% else %}
+    <input type="text" placeholder="Message" class="message" name="message" title="Message" class="from-control">
+    <br>
+    <br>
+    <button type="submit" class="bttn" title="Submit Post"  class="from-control" value="Submit">Submit</button><br>
+    {% endif %}
+
+    </div>
+    </form>
+
+
+    <div class="col-md-5"  class="responsive">
+    <br>
+    <br>
+    <br>
+
+
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.7619184419373!2d72.89753296400328!3d19.07420258708888!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c627923df00d%3A0x4c2b4fb28923f63d!2sSomaiya%20Vidyavihar%2C%20Group%20of%20Somaiya%20Institutions%2C%20Vidyanagar%2C%20Vidya%20Vihar%20East%2C%20Vidyavihar%2C%20Mumbai%2C%20Maharashtra%20400077!5e0!3m2!1sen!2sin!4v1585308974707!5m2!1sen!2sin" width="100%" height="330px" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+
+
+    <br>
+
+    </div>
+    </div>  
+
+
+
+<div class="footer">
+     <div class="foot-text">© 2020 Stock Prediction. All rights reserved.</div>
+         <ul class="nav-ul">
+             <li class="nav-li"><a class="nav-a" href="#" target="blank"><i class="fa fa-facebook"></i></a></li>
+             <li class="nav-li"><a class="nav-a" href="#" target="blank"><i class="fa fa-twitter"></i></a></li>
+             <li class="nav-li"><a class="nav-a" href="#" target="blank"><i class="fa fa-instagram"></i></a></li>
+             <li class="nav-li"><a class="nav-a" href="#" target="blank"><i class="fa fa-youtube"></i></a></li>
+         </ul>
+
+    </div>
+
+</body>
+</html>
